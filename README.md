@@ -1,6 +1,53 @@
-# CovinocPruebaTecnica
+# Prueba Técnica Frontend - Covinoc
+
+![alt text](./src/assets/images/logo-covinoc-home.jpg)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.19.
+
+# Introducción
+
+En este repositorio se encuentra la prueba técnica para el cargo de Frontend Developer,
+siguiendo para ello las pautas indicadas en la maqueta establecida, a continuación mayor información
+sobre las tecnologías utilizadas
+
+## Tecnologías utilizadas
+* NodeJS v14
+* Bootstrap 4
+* Font Awesome v4
+* Angular v11.2.9
+* NPM
+
+## Casos de uso
+
+![alt text](./src/assets/images/case_completed.png)
+
+### Caso 1
+
+El usuario debe poder ingresar tareas. las cuales deben aparecer en tiempo real en la Lista de Tareas
+
+![alt text](./src/assets/images/case_1.png)
+
+### Caso 2
+
+El usuario podra buscar tareas a nivel de front.
+
+![alt text](./src/assets/images/case_2.png)
+
+### Caso 3
+
+El usuario puede marcar las tareas como completadas.
+
+![alt text](./src/assets/images/case_3.png)
+
+### Caso 4
+
+El usuario puede eliminar tareas de la lista
+
+![alt text](./src/assets/images/case_4.png)
+
+
+## Instalación de Dependencias
+Run `npm install`
 
 ## Development server
 
