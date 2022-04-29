@@ -7,7 +7,7 @@
     <div class="card-body">
 
       <div class="form-group form-inline">
-        <div class="col-6 prim-color" style="font-size:25px">
+        <div class="col-6 prim-color title-table">
           <i class="fa fa-list"></i> Lista de tareas
         </div>
         <div class="col-6 text-right">
@@ -35,11 +35,11 @@
         <tr *ngFor="let task of tasks | listFilter: searchTerm | slice: (paginator.page-1) * paginator.pageSize : paginator.page * paginator.pageSize; let i = index; trackBy: trackByItems">
           <td>{{ task.id }}</td>
           <td [style.text-decoration]="!task.state ? 'none' : 'line-through'">{{ task.title }}</td>
-          <td><input type="checkbox" name="check_{{ task.id }}" id="check_{{ task.id }}"
+          <td><input class="click-cus" type="checkbox" name="check_{{ task.id }}" id="check_{{ task.id }}"
                      [(ngModel)]="task.state"
                      (ngModelChange)="updateStateTask(task)"></td>
           <td>
-            <i class="fa fa-trash" (click)="deleteTask(task.id)" style="color: red" title="Eliminar Tarea"></i>
+            <i class="fa fa-trash click-cus" (click)="deleteTask(task.id)" style="color: red" title="Eliminar Tarea"></i>
           </td>
         </tr>
         </tbody>

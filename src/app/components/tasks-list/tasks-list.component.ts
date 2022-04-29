@@ -27,6 +27,9 @@ export class TasksListComponent implements OnInit {
     this.getTasks();
   }
 
+  /**
+   * Metodo encargado de obtener las tareas
+   */
   getTasks(): void {
     this.loading = true;
     this.tasksService.getTasks()
@@ -38,6 +41,10 @@ export class TasksListComponent implements OnInit {
       }, error => this.loading = false);
   }
 
+  /**
+   * Encargado de filtrar los resultados
+   * @param value
+   */
   searchTasks(value: string): void {
     this.tasks = this.allTasks.filter((val) => (val.id.toString().includes(value) || val.title.toLowerCase().includes(value)));
     this.paginator.total = this.tasks.length;
@@ -62,18 +69,34 @@ export class TasksListComponent implements OnInit {
       });
   }
 
+  /**
+   * Encargado de eliminar una tarea especifica
+   * @param taskId
+   */
   deleteTask(taskId: number): void {
-    this.tasksService.deleteTask(taskId)
-      .subscribe(resp => {
-        Swal.fire({
-          title: 'Tarea eliminada',
-          icon: 'success',
-          toast: true
-        });
-        this.getTasks();
-      });
+    Swal.fire({
+      title: `Quieres eliminar la tarea ${ taskId }?`,
+      showCancelButton: true,
+      confirmButtonText: 'Eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.tasksService.deleteTask(taskId)
+          .subscribe(resp => {
+            Swal.fire({
+              title: 'Tarea eliminada',
+              icon: 'success',
+              toast: true
+            });
+            this.getTasks();
+          });
+      }
+    });
   }
 
+  /**
+   * Metodo ejecutado al momento de crear una tarea desde otro componente
+   * @param task
+   */
   addNewTask(task: TaskModel): void {
     this.searchTerm = '';
     this.getTasks();

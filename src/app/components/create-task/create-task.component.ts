@@ -38,6 +38,7 @@ export class CreateTaskComponent implements OnInit {
       .subscribe(resp => {
         this.sending = false;
         this.taskForm.reset();
+        this.taskForm.get('state').setValue(false);
         this.newTaskEvent.emit(resp);
         Swal.fire({
           title: 'Proceso exitoso!',

@@ -26,15 +26,15 @@
 
           <div class="form-group col-sm-12 col-md-3">
             <div class="checkbox">
-              <label for="isCompleted">
+              <label for="isCompleted" class="click-cus">
                 <span>Tarea completada?</span>
               </label>&nbsp;&nbsp;
-              <input type="checkbox" id="isCompleted" class="checkbox" formControlName="state"/>
+              <input type="checkbox" id="isCompleted" class="checkbox click-cus" formControlName="state"/>
             </div>
           </div>
 
           <div class="col-sm-12 col-md-3">
-            <button type="submit" class="shadow btn btn-light btn-create-task" [disabled]="sending">
+            <button type="submit" class="shadow btn btn-light btn-create-task" [disabled]="!taskForm.valid || sending">
               <i *ngIf="!sending" class="fa fa-plus"></i>
               <i *ngIf="sending" class="fa fa-spinner fa-spin"></i>
               &nbsp; <b>GUARDAR TAREA</b>
