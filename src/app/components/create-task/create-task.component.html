@@ -1,0 +1,48 @@
+<div class="task-style">
+  <div class="container">
+    <div class="col-12" style="top: 47px">
+      <p>
+        <span style="font-size: 20px"><b><i class="fa fa-plus"></i> Nueva tarea</b></span>
+      </p>
+      <form [formGroup]="taskForm" (ngSubmit)="createTask()">
+        <div class="row">
+          <div class="form-group col-sm-12 col-md-6 mb-2">
+            <label for="taskInpt" class="sr-only">Ingrese Título</label>
+            <input type="text" autocomplete="off" formControlName="title" class="form-control" id="taskInpt" placeholder="Ingrese Título">
+            <!-- Errors -->
+            <div *ngIf="taskForm.get('title').invalid && taskForm.get('title').errors && (taskForm.get('title').dirty || taskForm.get('title').touched)">
+              <small class="text-custom-errors"
+                     *ngIf="taskForm.get('title').hasError('required')">
+                Campo requerido.
+              </small>
+              <small class="text-custom-errors"
+                     *ngIf="taskForm.get('title').hasError('minlength')">
+                El tamaño minimo para este campo es de {{taskForm.get('title').errors.minlength.requiredLength}} caracteres.
+              </small>
+            </div>
+            <!-- Errors -->
+          </div>
+
+
+          <div class="form-group col-sm-12 col-md-3">
+            <div class="checkbox">
+              <label for="isCompleted">
+                <span>Tarea completada?</span>
+              </label>&nbsp;&nbsp;
+              <input type="checkbox" id="isCompleted" class="checkbox" formControlName="state"/>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-3">
+            <button type="submit" class="shadow btn btn-light btn-create-task" [disabled]="sending">
+              <i *ngIf="!sending" class="fa fa-plus"></i>
+              <i *ngIf="sending" class="fa fa-spinner fa-spin"></i>
+              &nbsp; <b>GUARDAR TAREA</b>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<br>

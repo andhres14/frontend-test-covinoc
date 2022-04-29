@@ -1,0 +1,55 @@
+<app-create-task (newTaskEvent)="addNewTask($event)"></app-create-task>
+
+<br>
+
+<div class="container">
+  <div class="card shadow">
+    <div class="card-body">
+
+      <div class="form-group form-inline">
+        <div class="col-6 prim-color" style="font-size:25px">
+          <i class="fa fa-list"></i> Lista de tareas
+        </div>
+        <div class="col-6 text-right">
+          <input class="form-control search-input" type="text" name="searchTerm" [(ngModel)]="searchTerm"
+                 (input)="searchTasks($event.target.value)" placeholder="Buscar"/>
+        </div>
+      </div>
+
+      <table class="table text-center">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Mis Tareas</th>
+          <th>Completada</th>
+          <th>Borrar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="loading">
+          <td class="text-center" colspan="4"><i class="fa fa-spinner fa-spin"></i> Cargando tareas...</td>
+        </tr>
+        <tr *ngIf="tasks.length === 0 && !loading">
+          <td class="text-center" colspan="4">No hay resultados.</td>
+        </tr>
+        <tr *ngFor="let task of tasks | listFilter: searchTerm | slice: (paginator.page-1) * paginator.pageSize : paginator.page * paginator.pageSize; let i = index; trackBy: trackByItems">
+          <td>{{ task.id }}</td>
+          <td [style.text-decoration]="!task.state ? 'none' : 'line-through'">{{ task.title }}</td>
+          <td><input type="checkbox" name="check_{{ task.id }}" id="check_{{ task.id }}"
+                     [(ngModel)]="task.state"
+                     (ngModelChange)="updateStateTask(task)"></td>
+          <td>
+            <i class="fa fa-trash" (click)="deleteTask(task.id)" style="color: red" title="Eliminar Tarea"></i>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <ngb-pagination [collectionSize]="paginator.total" [(page)]="paginator.page" [maxSize]="5" [boundaryLinks]="true"
+                      [pageSize]="paginator.pageSize" class="d-flex justify-content-center"></ngb-pagination>
+
+
+    </div>
+  </div>
+
+</div>
