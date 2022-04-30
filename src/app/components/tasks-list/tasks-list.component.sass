@@ -19,3 +19,21 @@ td
 
 .title-table
   font-size: 25px
+
+ngb-pagination ::ng-deep
+  a
+    background: #D0D0D0
+    color: black
+    margin: 0 5px 0 5px
+    border-radius: 5px
+
+  .page-item.active .page-link
+    border-color: #FFC183
+    background-color: #FFC183
+    color: white !important
+
+    &:focus
+      box-shadow: 0 0 0 0.1rem dimgrey
+
+.page-link:not(:disabled):not(.disabled):active:focus, ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus
+  box-shadow: 0 0 0 0.1rem dimgrey
