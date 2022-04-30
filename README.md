@@ -17,6 +17,10 @@ sobre las tecnologías utilizadas.
 * Angular v11.2.9
 * NPM
 
+## Sitio
+
+https://andhres14.github.io/frontend-test-covinoc/
+
 ## Casos de uso
 
 ![alt text](./src/assets/images/case_completed.png)
