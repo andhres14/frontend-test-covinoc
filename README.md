@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 En este repositorio se encuentra la prueba técnica para el cargo de Frontend Developer,
 siguiendo para ello las pautas indicadas en la maqueta establecida, a continuación mayor información
-sobre las tecnologías utilizadas
+sobre las tecnologías utilizadas.
 
 ## Tecnologías utilizadas
 * NodeJS v14
